@@ -1,5 +1,9 @@
 package com.springnelio.course.repositories;
 
-public class UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.springnelio.course.entities.User;
+
+public interface UserRepository extends JpaRepository<User, Long>{
 
 }
