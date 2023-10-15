@@ -22,4 +22,4 @@ Projeto foi seguido a partir do projeto de Springboot do curso de Java do Nélio
 
 ### Modelo de domínio
 
-![Dominio](/course/imgs/domain.jpg)
+![Dominio](/imgs/domain.jpg)
