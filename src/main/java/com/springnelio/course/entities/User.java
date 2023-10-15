@@ -19,17 +19,27 @@ import jakarta.persistence.Table;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	
+	//Properties
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
+	
 	private String email;
+	
 	private String phone;
+	
 	private String password;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
+	
+	
+	//Constructors
 	
 	public User() {}
 
@@ -41,6 +51,9 @@ public class User implements Serializable {
 		this.phone = phone;
 		this.password = password;
 	}
+	
+	
+	//Getters and setters
 
 	public Long getId() {
 		return id;
@@ -85,6 +98,9 @@ public class User implements Serializable {
 	public List<Order> getOrders() {
 		return orders;
 	}
+	
+	
+	//Equals and HashCode
 	
 	@Override
 	public int hashCode() {

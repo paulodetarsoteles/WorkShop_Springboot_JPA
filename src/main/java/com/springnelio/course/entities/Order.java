@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.springnelio.course.entities.enums.OrderStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,23 +19,36 @@ import jakarta.persistence.Table;
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	
+	//Properties
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private Instant moment;
+	
+	private Integer orderStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "clientId")
 	private User client;
-
+	
+	
+	//Constructors
+	
 	public Order() {}
 	
-	public Order(Long id, Instant moment, User client) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus,User client) {
 		super();
 		this.id = id;
 		this.moment = moment;
+		setOrderStatus(orderStatus);
 		this.client = client;
 	}
+	
+	
+	//Getters and setters
 
 	public Long getId() {
 		return id;
@@ -50,6 +65,15 @@ public class Order implements Serializable {
 	public void setMoment(Instant moment) {
 		this.moment = moment;
 	}
+	
+	public OrderStatus getOrderStatus() {
+		return OrderStatus.valueOf(orderStatus);
+	}
+	
+	public void setOrderStatus(OrderStatus orderStatus) {
+		if (orderStatus != null)
+			this.orderStatus = orderStatus.getCode();
+	}
 
 	public User getClient() {
 		return client;
@@ -58,6 +82,9 @@ public class Order implements Serializable {
 	public void setClient(User client) {
 		this.client = client;
 	}
+	
+	
+	//Equals and HashCode
 
 	@Override
 	public int hashCode() {
