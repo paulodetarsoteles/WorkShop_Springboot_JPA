@@ -15,3 +15,10 @@ Projeto de estudo Web API autoral básico de controle (CRUD) de tarefas para fon
 -
 
 Projeto foi seguido a partir do projeto de Springboot do curso de Java do Nélio Alves na Udemy
+
+### Camadas lógicas
+
+
+
+### Modelo de domínio
+
