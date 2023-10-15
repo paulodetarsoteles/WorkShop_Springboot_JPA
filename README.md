@@ -18,7 +18,7 @@ Projeto foi seguido a partir do projeto de Springboot do curso de Java do Nélio
 
 ### Camadas lógicas
 
-![Camadas](imgs/domain.jpg)
+![Camadas](imgs/layer.jpg)
 
 ### Modelo de domínio
 
