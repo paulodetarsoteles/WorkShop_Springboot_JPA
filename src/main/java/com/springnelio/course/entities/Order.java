@@ -99,6 +99,18 @@ public class Order implements Serializable {
 	}
 	
 	
+	//Specific Methods
+	
+	public Double getTotal() {
+		Double result = 0.0;
+		
+		for(OrderItem item : items)
+			result += item.getSubTotal();
+		
+		return result;
+	}
+	
+	
 	//Equals and HashCode
 
 	public Payment getPayment() {
