@@ -20,7 +20,24 @@ public class OrderServices {
 	}
 
 	public Order findById(Long id) {
-		Optional<Order> user = repository.findById(id);
-		return user.get();
+		Optional<Order> order = repository.findById(id);
+		return order.get();
+	}
+	
+	public Order insert(Order obj) {
+		return repository.save(obj);
+	}
+	
+	public Order update(Long id, Order obj) {
+		Order entity = repository.getReferenceById(id);
+		
+		entity.setOrderStatus(obj.getOrderStatus());
+		entity.setPayment(obj.getPayment());
+		 
+		return repository.save(entity);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
 	}
 }
