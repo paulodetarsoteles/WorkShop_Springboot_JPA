@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.springnelio.course.entities.User;
 import com.springnelio.course.services.UserServices;
+import com.springnelio.course.services.exceptions.ResourceIncorrectParametersException;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -35,12 +36,9 @@ public class UserResource {
 	@GetMapping(value = "/findById/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 		if (id <= 0)
-			return ResponseEntity.badRequest().build();
+			throw new ResourceIncorrectParametersException(id);
 
 		User user = service.findById(id);
-
-		if (user == null)
-			return ResponseEntity.noContent().build();
 
 		return ResponseEntity.ok().body(user);
 	}
