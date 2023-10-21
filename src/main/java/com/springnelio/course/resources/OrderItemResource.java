@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springnelio.course.entities.OrderItem;
 import com.springnelio.course.services.OrderItemServices;
+import com.springnelio.course.services.exceptions.ResourceIncorrectParametersException;
 
 @RestController
 @RequestMapping(value = "/orderItems")
@@ -29,7 +30,7 @@ public class OrderItemResource {
 	@GetMapping(value = "/findById/{id}")
 	public ResponseEntity<OrderItem> findById(@PathVariable Long id) {
 		if (id <= 0)
-			return ResponseEntity.badRequest().build();
+			throw new ResourceIncorrectParametersException(id);
 
 		OrderItem orderItem = service.findById(id);
 

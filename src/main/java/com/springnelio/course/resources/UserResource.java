@@ -54,6 +54,9 @@ public class UserResource {
 	
 	@PutMapping(value = "update/{id}")
 	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj){
+		if (id <= 0)
+			throw new ResourceIncorrectParametersException(id);
+		
 		User result = service.update(id, obj);
 		
 		return ResponseEntity.ok(result);
@@ -61,6 +64,9 @@ public class UserResource {
 	
 	@DeleteMapping(value = "/delete/{id}")
  	public ResponseEntity<Void> delete(@PathVariable Long id){
+		if (id <= 0)
+			throw new ResourceIncorrectParametersException(id);
+		
 		service.delete(id);
 		
 		return ResponseEntity.noContent().build();

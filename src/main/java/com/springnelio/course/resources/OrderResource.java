@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.springnelio.course.entities.Order;
 import com.springnelio.course.entities.enums.OrderStatus;
 import com.springnelio.course.services.OrderServices;
+import com.springnelio.course.services.exceptions.ResourceIncorrectParametersException;
 
 @RestController
 @RequestMapping(value = "/orders")
@@ -37,7 +38,7 @@ public class OrderResource {
 	@GetMapping(value = "/findById/{id}")
 	public ResponseEntity<Order> findById(@PathVariable Long id) {
 		if (id <= 0)
-			return ResponseEntity.badRequest().build();
+			throw new ResourceIncorrectParametersException(id);
 
 		Order order = service.findById(id);
 
@@ -61,6 +62,9 @@ public class OrderResource {
 	
 	@PutMapping(value = "update/{id}")
 	public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order obj){
+		if (id <= 0)
+			throw new ResourceIncorrectParametersException(id);
+		
 		Order result = service.update(id, obj);
 		
 		return ResponseEntity.ok(result);
@@ -68,6 +72,9 @@ public class OrderResource {
 	
 	@DeleteMapping(value = "/delete/{id}")
  	public ResponseEntity<Void> delete(@PathVariable Long id){
+		if (id <= 0)
+			throw new ResourceIncorrectParametersException(id);
+		
 		service.delete(id);
 		
 		return ResponseEntity.noContent().build();

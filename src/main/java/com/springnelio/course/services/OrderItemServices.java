@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.springnelio.course.entities.OrderItem;
 import com.springnelio.course.repositories.OrderItemRepository;
+import com.springnelio.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class OrderItemServices {
@@ -21,6 +22,6 @@ public class OrderItemServices {
 	
 	public OrderItem findById(Long id) {
 		Optional<OrderItem> orderItems = repository.findById(id);
-		return orderItems.get();
+		return orderItems.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 }

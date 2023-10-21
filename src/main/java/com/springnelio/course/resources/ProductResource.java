@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springnelio.course.entities.Product;
 import com.springnelio.course.services.ProductServices;
+import com.springnelio.course.services.exceptions.ResourceIncorrectParametersException;
 
 @RestController
 @RequestMapping(value = "/products")
@@ -29,7 +30,7 @@ public class ProductResource {
 	@GetMapping(value = "/findById/{id}")
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
 		if (id <= 0)
-			return ResponseEntity.badRequest().build();
+			throw new ResourceIncorrectParametersException(id);
 
 		Product product = service.findById(id);
 
