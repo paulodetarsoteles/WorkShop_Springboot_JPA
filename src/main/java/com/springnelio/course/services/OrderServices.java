@@ -32,6 +32,9 @@ public class OrderServices {
 	public Order update(Long id, Order obj) {
 		Order entity = repository.getReferenceById(id);
 		
+		if (entity == null)
+			throw new ResourceNotFoundException(id);
+		
 		entity.setOrderStatus(obj.getOrderStatus());
 		entity.setPayment(obj.getPayment());
 		 
@@ -39,6 +42,10 @@ public class OrderServices {
 	}
 	
 	public void delete(Long id) {
+		
+		if (!repository.existsById(id))
+			throw new ResourceNotFoundException(id);
+		
 		repository.deleteById(id);
 	}
 }
