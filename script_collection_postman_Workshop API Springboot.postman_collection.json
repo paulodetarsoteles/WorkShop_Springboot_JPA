@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "50f0cadd-f3fb-4d07-bfe2-9eb67d89b65f",
+		"name": "Workshop API Springboot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26020147"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"auth": {
+							"type": "inherit"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"auth": {
+							"type": "inherit"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/findById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"findById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Patrícia\",\r\n    \"email\": \"patricia@gmail.com\",\r\n    \"phone\": \"85991672958\",\r\n    \"password\": \"patricia123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/insert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "inherit"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/delete/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"delete",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "inherit"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Paulo de Tarso Teles\",\r\n    \"email\": \"paulopotassio@gmail.com\",\r\n    \"phone\": \"085991672946\",\r\n    \"password\": \"paulo123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/orders/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/orders/findById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"findById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"client\": {\r\n            \"id\": 1,\r\n            \"name\": \"Paulo de Tarso Teles\",\r\n            \"email\": \"paulopotassio@gmail.com\",\r\n            \"phone\": \"085991672946\",\r\n            \"password\": \"paulo123\"\r\n        },\r\n        \"items\": [\r\n            {\r\n                \"quantity\": 2,\r\n                \"price\": 300.0,\r\n                \"product\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"Monitor LG\",\r\n                    \"description\": \"21 polegadas\",\r\n                    \"price\": 300.0,\r\n                    \"imgUrl\": null,\r\n                    \"categories\": [\r\n                        {\r\n                            \"id\": 1,\r\n                            \"name\": \"Monitores\"\r\n                        },\r\n                        {\r\n                            \"id\": 8,\r\n                            \"name\": \"Eletrônicos\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subTotal\": 600.0\r\n            },\r\n            {\r\n                \"quantity\": 1,\r\n                \"price\": 1800.0,\r\n                \"product\": {\r\n                    \"id\": 3,\r\n                    \"name\": \"Notebook Study\",\r\n                    \"description\": \"i3, 4gb ram, 500 hd\",\r\n                    \"price\": 1800.0,\r\n                    \"imgUrl\": null,\r\n                    \"categories\": [\r\n                        {\r\n                            \"id\": 3,\r\n                            \"name\": \"Notebooks\"\r\n                        },\r\n                        {\r\n                            \"id\": 8,\r\n                            \"name\": \"Eletrônicos\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subTotal\": 1800.0\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/orders/insert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"client\": {\r\n            \"id\": 1,\r\n            \"name\": \"Paulo de Tarso Teles\",\r\n            \"email\": \"paulopotassio@gmail.com\",\r\n            \"phone\": \"085991672946\",\r\n            \"password\": \"paulo123\"\r\n        },\r\n        \"items\": [\r\n            {\r\n                \"quantity\": 2,\r\n                \"price\": 300.0,\r\n                \"product\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"Monitor LG\",\r\n                    \"description\": \"21 polegadas\",\r\n                    \"price\": 300.0,\r\n                    \"imgUrl\": null,\r\n                    \"categories\": [\r\n                        {\r\n                            \"id\": 1,\r\n                            \"name\": \"Monitores\"\r\n                        },\r\n                        {\r\n                            \"id\": 8,\r\n                            \"name\": \"Eletrônicos\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subTotal\": 600.0\r\n            },\r\n            {\r\n                \"quantity\": 1,\r\n                \"price\": 1800.0,\r\n                \"product\": {\r\n                    \"id\": 3,\r\n                    \"name\": \"Notebook Study\",\r\n                    \"description\": \"i3, 4gb ram, 500 hd\",\r\n                    \"price\": 1800.0,\r\n                    \"imgUrl\": null,\r\n                    \"categories\": [\r\n                        {\r\n                            \"id\": 3,\r\n                            \"name\": \"Notebooks\"\r\n                        },\r\n                        {\r\n                            \"id\": 8,\r\n                            \"name\": \"Eletrônicos\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subTotal\": 1800.0\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/orders/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"moment\": \"2023-10-13T17:00:00Z\",\r\n    \"orderStatus\": \"CANCELED\",\r\n    \"client\": {\r\n        \"id\": 1,\r\n        \"name\": \"Paulo de Tarso Teles\",\r\n        \"email\": \"paulopotassio@gmail.com\",\r\n        \"phone\": \"085991672946\",\r\n        \"password\": \"paulo123\"\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"price\": 300.0,\r\n            \"product\": {\r\n                \"id\": 1,\r\n                \"name\": \"Monitor LG\",\r\n                \"description\": \"21 polegadas\",\r\n                \"price\": 300.0,\r\n                \"imgUrl\": null,\r\n                \"categories\": [\r\n                    {\r\n                        \"id\": 1,\r\n                        \"name\": \"Monitores\"\r\n                    },\r\n                    {\r\n                        \"id\": 8,\r\n                        \"name\": \"Eletrônicos\"\r\n                    }\r\n                ]\r\n            },\r\n            \"subTotal\": 600.0\r\n        },\r\n        {\r\n            \"quantity\": 1,\r\n            \"price\": 1800.0,\r\n            \"product\": {\r\n                \"id\": 3,\r\n                \"name\": \"Notebook Study\",\r\n                \"description\": \"i3, 4gb ram, 500 hd\",\r\n                \"price\": 1800.0,\r\n                \"imgUrl\": null,\r\n                \"categories\": [\r\n                    {\r\n                        \"id\": 3,\r\n                        \"name\": \"Notebooks\"\r\n                    },\r\n                    {\r\n                        \"id\": 8,\r\n                        \"name\": \"Eletrônicos\"\r\n                    }\r\n                ]\r\n            },\r\n            \"subTotal\": 1800.0\r\n        }\r\n    ],\r\n    \"payment\": null,\r\n    \"total\": 2400.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/orders/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categories/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categories/findById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"findById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products/findById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"findById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
