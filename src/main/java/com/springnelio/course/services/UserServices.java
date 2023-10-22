@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.springnelio.course.entities.User;
 import com.springnelio.course.repositories.UserRepository;
+import com.springnelio.course.services.exceptions.DbIntegrityException;
 import com.springnelio.course.services.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UserServices {
@@ -31,16 +34,18 @@ public class UserServices {
 	}
 
 	public User update(Long id, User obj) {
-		User entity = repository.getReferenceById(id);
-		
-		if (entity == null)
+		try {
+			User entity = repository.getReferenceById(id);
+
+			entity.setName(obj.getName());
+			entity.setEmail(obj.getEmail());
+			entity.setPhone(obj.getPhone());
+
+			return repository.save(entity);
+		}
+		catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
-
-		entity.setName(obj.getName());
-		entity.setEmail(obj.getEmail());
-		entity.setPhone(obj.getPhone());
-
-		return repository.save(entity);
+		}
 	}
 
 	public void delete(Long id) {
@@ -50,7 +55,7 @@ public class UserServices {
 		
 			repository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			//TODO thrown new person exception
+			throw new DbIntegrityException(e.getMessage()); 
 		}
 	}
 }
